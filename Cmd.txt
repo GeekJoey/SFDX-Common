@@ -1,5 +1,3 @@
-# SFDX & Git 常用命令(入门版)
-
 sfdx force:auth:web:login -d -a DevHub环境别名
 
 sfdx force:project:create -n 本地项目名
@@ -34,6 +32,3 @@ sfdx force:package:version:create -p th-dreamhouse -d force-app -k test1234 --wa
 sfdx force:package:install --wait 10 --publishwait 10 --package th-dreamhouse@1.0.0-1 -k test1234 -r -u SO环境别名
 sfdx force:package:install --wait 10 --publishwait 10 --package th-dreamhouse@1.0.0-1 -k test1234 -r -u DevHub环境别名
 sfdx force:package:version:promote -p dreamhouse@1.0.0-1 -v DevHub环境别名
-
-
-
