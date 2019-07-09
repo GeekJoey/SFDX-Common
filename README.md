@@ -1,1 +1,39 @@
-# SFDX-Common
+# SFDX & Git 常用命令(入门版)
+
+sfdx force:auth:web:login -d -a DevHub环境别名
+
+sfdx force:project:create -n 本地项目名
+
+cd 项目名
+
+sfdx force:org:create -d SO开通多少天(7-30) -s -a SO环境别名 -f config/project-scratch-def.json
+
+sfdx force:org:list
+
+sfdx force:config:set defaultdevhubusername=当前项目默认DevHub环境用户名
+
+sfdx force:config:set defaultusername=当前项目默认部署环境用户名
+
+Git命令一般流程:
+
+git init 
+git add .
+git commit --message "Initial commit"
+git remote add origin git远程仓库位置（一次性配好，下次提交不用再配了）
+git push origin master
+
+打开当前文件夹
+
+open .
+
+打包
+
+sfdx force:package:create --name 包名 --description "描述" --packagetype Unlocked --path force-app --nonamespace --targetdevhubusername DevHub环境别名
+sfdx force:org:create --definitionfile config/project-scratch-def.json --durationdays 30 --setalias SO环境别名 -v DevHub环境别名
+sfdx force:package:version:create -p th-dreamhouse -d force-app -k test1234 --wait 10 -v DevHub环境别名
+sfdx force:package:install --wait 10 --publishwait 10 --package th-dreamhouse@1.0.0-1 -k test1234 -r -u SO环境别名
+sfdx force:package:install --wait 10 --publishwait 10 --package th-dreamhouse@1.0.0-1 -k test1234 -r -u DevHub环境别名
+sfdx force:package:version:promote -p dreamhouse@1.0.0-1 -v DevHub环境别名
+
+
+
