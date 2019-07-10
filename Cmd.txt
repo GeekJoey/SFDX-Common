@@ -12,6 +12,10 @@ sfdx force:config:set defaultdevhubusername=当前项目默认DevHub环境用户
 
 sfdx force:config:set defaultusername=当前项目默认部署环境用户名
 
+部署到目标环境
+
+sfdx force:source:deploy --sourcepath force-app --targetusername 你环境的用户名或别名（非SO）
+
 Git命令一般流程:
 
 git init 
